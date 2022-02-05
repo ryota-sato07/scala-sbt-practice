@@ -1,0 +1,15 @@
+.bloop
+.bsp
+.idea
+.idea_modules
+.classpath
+.project
+.settings
+.aws-sam
+.vscode
+.metals
+.DS_Store
+target
+RUNNING_PID
+coc-settings.json
+coursier
