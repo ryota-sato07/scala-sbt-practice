@@ -16,12 +16,37 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object Future1 {
+
+  case class Student (
+    id:              Long,   // 生徒ID
+    classId:         String, // クラス名
+    studentName:     String  // 生徒名
+  )
+
+  object Database {
+    def getStudentById(studentId: Long): Future[Student] =
+      Future {
+        Thread.sleep(1000)
+        Student(
+          id             = 1,
+          classId        = 1,
+          studentName    = "山田"
+        )
+      }
+  }
+
+  def output(outputId: Long): Unit = {
+    for {
+      studentInfo <- Database.getStudentById(id)
+      } yield {
+        println(studentInfo.studentName)
+      }
+
+  }
+
   def main(args: Array[String]): Unit = {
 
-    //初期化
-    val future = Future("hoge")
-    println(future) 
+    output(1.toLong)
+    Thread.sleep(3000)
   }
 }
-
-//[info] Future(Success(hoge))
